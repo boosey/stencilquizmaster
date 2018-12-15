@@ -7,10 +7,10 @@
 
 import '@stencil/core';
 
-import '@stencil/router';
-import '@stencil/state-tunnel';
 import '@ionic/core';
 import 'ionicons';
+import '@stencil/router';
+import '@stencil/state-tunnel';
 
 
 export namespace Components {
@@ -26,10 +26,13 @@ export namespace Components {
     'onEditGameCompleted'?: (event: CustomEvent) => void;
   }
 
-  interface AppEditGame {}
+  interface AppEditGame {
+    'gameId': string;
+  }
   interface AppEditGameAttributes extends StencilHTMLAttributes {
-    'onEditGameCompleted'?: (event: CustomEvent) => void;
-    'onEditGameRequested'?: (event: CustomEvent) => void;
+    'gameId'?: string;
+    'onLoadGameRequested'?: (event: CustomEvent) => void;
+    'onUpdateGameRequested'?: (event: CustomEvent) => void;
   }
 
   interface AppHome {}
