@@ -77,6 +77,13 @@ export namespace Components {
 
   interface AppRoot {}
   interface AppRootAttributes extends StencilHTMLAttributes {}
+
+  interface AppSubpageHeader {
+    'titleText': string;
+  }
+  interface AppSubpageHeaderAttributes extends StencilHTMLAttributes {
+    'titleText'?: string;
+  }
 }
 
 declare global {
@@ -90,6 +97,7 @@ declare global {
     'AppPlayGame': Components.AppPlayGame;
     'AppProfile': Components.AppProfile;
     'AppRoot': Components.AppRoot;
+    'AppSubpageHeader': Components.AppSubpageHeader;
   }
 
   interface StencilIntrinsicElements {
@@ -102,6 +110,7 @@ declare global {
     'app-play-game': Components.AppPlayGameAttributes;
     'app-profile': Components.AppProfileAttributes;
     'app-root': Components.AppRootAttributes;
+    'app-subpage-header': Components.AppSubpageHeaderAttributes;
   }
 
 
@@ -159,6 +168,12 @@ declare global {
     new (): HTMLAppRootElement;
   };
 
+  interface HTMLAppSubpageHeaderElement extends Components.AppSubpageHeader, HTMLStencilElement {}
+  var HTMLAppSubpageHeaderElement: {
+    prototype: HTMLAppSubpageHeaderElement;
+    new (): HTMLAppSubpageHeaderElement;
+  };
+
   interface HTMLElementTagNameMap {
     'app-add-game': HTMLAppAddGameElement
     'app-commands': HTMLAppCommandsElement
@@ -169,6 +184,7 @@ declare global {
     'app-play-game': HTMLAppPlayGameElement
     'app-profile': HTMLAppProfileElement
     'app-root': HTMLAppRootElement
+    'app-subpage-header': HTMLAppSubpageHeaderElement
   }
 
   interface ElementTagNameMap {
@@ -181,6 +197,7 @@ declare global {
     'app-play-game': HTMLAppPlayGameElement;
     'app-profile': HTMLAppProfileElement;
     'app-root': HTMLAppRootElement;
+    'app-subpage-header': HTMLAppSubpageHeaderElement;
   }
 
 
