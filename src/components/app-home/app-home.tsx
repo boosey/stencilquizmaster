@@ -45,7 +45,7 @@ export class AppHome {
         this.userUpdated.emit(this.user)
         const query = this.gamesRef.where('creator', "==", user.uid);
         this.gamesSubscription = collectionData(query, 'gameId')
-          .subscribe(qs => this.games = qs)
+          .subscribe((games) => this.games = games)
         this.dismissLoading();
     })
   }
@@ -120,16 +120,22 @@ export class AppHome {
                   <ion-card-content>
                     <ion-grid>
                       <ion-row>
-                       <ion-col size="2" offset="0">
-                        <ion-button href={("/editgame/" + g.gameId)} fill="outline" shape="round">
-                        Edit
-                        </ion-button>
+                       <ion-col>
+                          <ion-button href={("/editgame/" + g.gameId)} fill="outline" >
+                          Edit
+                          </ion-button>
                        </ion-col>
-                       <ion-col size="2"/>
-                       <ion-col size="2">
-                        <ion-button href={"/playgame/" + g.gameId} fill="outline" shape="round">
-                        Play
-                        </ion-button>
+                       <ion-col />
+                       <ion-col >
+                         <ion-button href={("/editgame/" + g.gameId + "/questions/")} fill="outline" >
+                         Questions
+                         </ion-button>
+                       </ion-col>
+                       <ion-col />
+                       <ion-col >
+                          <ion-button href={"/playgame/" + g.gameId} fill="outline" >
+                          Play
+                          </ion-button>
                        </ion-col>
                       </ion-row>
                     </ion-grid>

@@ -1,7 +1,8 @@
 
-import { Component, Event, EventEmitter, Listen } from '@stencil/core';
-import { docData } from 'rxfire/firestore';
+import { Component, Event, EventEmitter, Listen, State, Watch } from '@stencil/core';
+import { collectionData, docData } from 'rxfire/firestore';
 import {first} from 'rxjs/operators'
+import { empty } from 'rxjs'
 
 
 declare var firebase: firebase.app.App;
@@ -10,14 +11,33 @@ declare var firebase: firebase.app.App;
     tag: 'app-commands',
     styleUrl: 'app-commands.css'
 })
+
 export class AppCommands {
 
-    private user = null
+    @State() user = null
 
     @Event() addGameCompleted: EventEmitter
     @Event() editGameCompleted: EventEmitter
 
     private gamesCollectionRef = firebase.firestore().collection('games')
+    private questionsRef = firebase.firestore().collection('questions')
+
+    @Listen('loadQuestionsRequested')
+    loadQuestionsRequested(ev) {
+      var gameId = ev.detail.data ? ev.detail.data.gameId : ''
+      var status = ev.detail.status
+      var uid = this.user ? this.user.uid : ''
+
+      var questionsQuery = this.questionsRef
+      .where('creator', "==", uid)
+      .where('gameId', "==", gameId)
+
+      collectionData(questionsQuery, "questionId").subscribe(
+         (question) => status.next(question),
+         () => console.log("Error getting questions"),
+         () => status.complete()
+      )
+    }
 
     @Listen('loadGameRequested')
     loadGameRequestedHandler(ev){

@@ -7,10 +7,10 @@
 
 import '@stencil/core';
 
-import '@stencil/router';
-import '@stencil/state-tunnel';
 import '@ionic/core';
 import 'ionicons';
+import '@stencil/router';
+import '@stencil/state-tunnel';
 
 
 export namespace Components {
@@ -75,6 +75,14 @@ export namespace Components {
     'name'?: string;
   }
 
+  interface AppQuestions {
+    'gameId': string;
+  }
+  interface AppQuestionsAttributes extends StencilHTMLAttributes {
+    'gameId'?: string;
+    'onLoadQuestionsRequested'?: (event: CustomEvent) => void;
+  }
+
   interface AppRoot {}
   interface AppRootAttributes extends StencilHTMLAttributes {}
 
@@ -96,6 +104,7 @@ declare global {
     'AppMainmenu': Components.AppMainmenu;
     'AppPlayGame': Components.AppPlayGame;
     'AppProfile': Components.AppProfile;
+    'AppQuestions': Components.AppQuestions;
     'AppRoot': Components.AppRoot;
     'AppSubpageHeader': Components.AppSubpageHeader;
   }
@@ -109,6 +118,7 @@ declare global {
     'app-mainmenu': Components.AppMainmenuAttributes;
     'app-play-game': Components.AppPlayGameAttributes;
     'app-profile': Components.AppProfileAttributes;
+    'app-questions': Components.AppQuestionsAttributes;
     'app-root': Components.AppRootAttributes;
     'app-subpage-header': Components.AppSubpageHeaderAttributes;
   }
@@ -162,6 +172,12 @@ declare global {
     new (): HTMLAppProfileElement;
   };
 
+  interface HTMLAppQuestionsElement extends Components.AppQuestions, HTMLStencilElement {}
+  var HTMLAppQuestionsElement: {
+    prototype: HTMLAppQuestionsElement;
+    new (): HTMLAppQuestionsElement;
+  };
+
   interface HTMLAppRootElement extends Components.AppRoot, HTMLStencilElement {}
   var HTMLAppRootElement: {
     prototype: HTMLAppRootElement;
@@ -183,6 +199,7 @@ declare global {
     'app-mainmenu': HTMLAppMainmenuElement
     'app-play-game': HTMLAppPlayGameElement
     'app-profile': HTMLAppProfileElement
+    'app-questions': HTMLAppQuestionsElement
     'app-root': HTMLAppRootElement
     'app-subpage-header': HTMLAppSubpageHeaderElement
   }
@@ -196,6 +213,7 @@ declare global {
     'app-mainmenu': HTMLAppMainmenuElement;
     'app-play-game': HTMLAppPlayGameElement;
     'app-profile': HTMLAppProfileElement;
+    'app-questions': HTMLAppQuestionsElement;
     'app-root': HTMLAppRootElement;
     'app-subpage-header': HTMLAppSubpageHeaderElement;
   }
