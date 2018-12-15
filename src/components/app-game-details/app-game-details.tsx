@@ -32,14 +32,7 @@ export class AppGameDetails {
     render() {
         return [
           <ion-header>
-            <ion-toolbar color="primary">
-              <ion-buttons slot="start">
-                <ion-button href="/">
-                  <ion-icon slot="icon-only" name="close"></ion-icon>
-                </ion-button>
-              </ion-buttons>
-              <ion-title>{this.titleText}</ion-title>
-            </ion-toolbar>
+            <app-subpage-header ></app-subpage-header>
           </ion-header>,
 
           <ion-content padding>
