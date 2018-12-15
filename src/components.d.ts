@@ -7,10 +7,10 @@
 
 import '@stencil/core';
 
-import '@ionic/core';
-import 'ionicons';
 import '@stencil/router';
 import '@stencil/state-tunnel';
+import '@ionic/core';
+import 'ionicons';
 
 
 export namespace Components {
@@ -33,6 +33,18 @@ export namespace Components {
     'gameId'?: string;
     'onLoadGameRequested'?: (event: CustomEvent) => void;
     'onUpdateGameRequested'?: (event: CustomEvent) => void;
+  }
+
+  interface AppGameDetails {
+    'buttonText': string;
+    'game': any;
+    'titleText': string;
+  }
+  interface AppGameDetailsAttributes extends StencilHTMLAttributes {
+    'buttonText'?: string;
+    'game'?: any;
+    'onGameDetailsSubmitted'?: (event: CustomEvent) => void;
+    'titleText'?: string;
   }
 
   interface AppHome {}
@@ -72,6 +84,7 @@ declare global {
     'AppAddGame': Components.AppAddGame;
     'AppCommands': Components.AppCommands;
     'AppEditGame': Components.AppEditGame;
+    'AppGameDetails': Components.AppGameDetails;
     'AppHome': Components.AppHome;
     'AppMainmenu': Components.AppMainmenu;
     'AppPlayGame': Components.AppPlayGame;
@@ -83,6 +96,7 @@ declare global {
     'app-add-game': Components.AppAddGameAttributes;
     'app-commands': Components.AppCommandsAttributes;
     'app-edit-game': Components.AppEditGameAttributes;
+    'app-game-details': Components.AppGameDetailsAttributes;
     'app-home': Components.AppHomeAttributes;
     'app-mainmenu': Components.AppMainmenuAttributes;
     'app-play-game': Components.AppPlayGameAttributes;
@@ -107,6 +121,12 @@ declare global {
   var HTMLAppEditGameElement: {
     prototype: HTMLAppEditGameElement;
     new (): HTMLAppEditGameElement;
+  };
+
+  interface HTMLAppGameDetailsElement extends Components.AppGameDetails, HTMLStencilElement {}
+  var HTMLAppGameDetailsElement: {
+    prototype: HTMLAppGameDetailsElement;
+    new (): HTMLAppGameDetailsElement;
   };
 
   interface HTMLAppHomeElement extends Components.AppHome, HTMLStencilElement {}
@@ -143,6 +163,7 @@ declare global {
     'app-add-game': HTMLAppAddGameElement
     'app-commands': HTMLAppCommandsElement
     'app-edit-game': HTMLAppEditGameElement
+    'app-game-details': HTMLAppGameDetailsElement
     'app-home': HTMLAppHomeElement
     'app-mainmenu': HTMLAppMainmenuElement
     'app-play-game': HTMLAppPlayGameElement
@@ -154,6 +175,7 @@ declare global {
     'app-add-game': HTMLAppAddGameElement;
     'app-commands': HTMLAppCommandsElement;
     'app-edit-game': HTMLAppEditGameElement;
+    'app-game-details': HTMLAppGameDetailsElement;
     'app-home': HTMLAppHomeElement;
     'app-mainmenu': HTMLAppMainmenuElement;
     'app-play-game': HTMLAppPlayGameElement;
