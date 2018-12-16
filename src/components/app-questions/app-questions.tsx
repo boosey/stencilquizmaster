@@ -42,24 +42,23 @@ export class AppQuestions {
     render() {
         return [
           <ion-header>
-            <app-subpage-header titleText="Questions"></app-subpage-header>
+            <app-subpage-header titleText="Questions" button="add"></app-subpage-header>
           </ion-header>,
 
           <ion-content padding>
-          <ion-list>
-          {this.questions ? this.questions.map((q) => (
-              <ion-card>
-                <ion-card-header>
-                  <ion-card-title>{q.prompt}</ion-card-title>
-                </ion-card-header>
-                <ion-card-content>
-                </ion-card-content>
-              </ion-card>
-            ))
-            : ''
-          }
-
-          </ion-list>
+            <ion-list>
+              {this.questions ? this.questions.map((q) => (
+                  <ion-card>
+                    <ion-card-header>
+                      <ion-card-title>{q.prompt}</ion-card-title>
+                    </ion-card-header>
+                    <ion-card-content>
+                    </ion-card-content>
+                  </ion-card>
+                ))
+                : ''
+              }
+            </ion-list>
           </ion-content>
         ]
     }

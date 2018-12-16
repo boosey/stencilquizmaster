@@ -87,9 +87,11 @@ export namespace Components {
   interface AppRootAttributes extends StencilHTMLAttributes {}
 
   interface AppSubpageHeader {
+    'button': string;
     'titleText': string;
   }
   interface AppSubpageHeaderAttributes extends StencilHTMLAttributes {
+    'button'?: string;
     'titleText'?: string;
   }
 }
