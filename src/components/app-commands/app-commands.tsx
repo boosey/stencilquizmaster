@@ -16,9 +16,6 @@ export class AppCommands {
 
     @State() user = null
 
-    @Event() addGameCompleted: EventEmitter
-    @Event() editGameCompleted: EventEmitter
-
     private gamesCollectionRef = firebase.firestore().collection('games')
     private questionsRef = firebase.firestore().collection('questions')
 

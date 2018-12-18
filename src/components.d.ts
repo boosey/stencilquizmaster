@@ -21,10 +21,7 @@ export namespace Components {
   }
 
   interface AppCommands {}
-  interface AppCommandsAttributes extends StencilHTMLAttributes {
-    'onAddGameCompleted'?: (event: CustomEvent) => void;
-    'onEditGameCompleted'?: (event: CustomEvent) => void;
-  }
+  interface AppCommandsAttributes extends StencilHTMLAttributes {}
 
   interface AppEditGame {
     'gameId': string;

@@ -2,8 +2,6 @@
 import { Component, Event, EventEmitter, Listen } from '@stencil/core';
 import { Subject } from "rxjs"
 
-const nav = document.querySelector('ion-nav')
-
 @Component({
     tag: 'app-add-game',
     styleUrl: 'app-add-game.css'
@@ -14,11 +12,6 @@ export class AppAddGame {
     @Event() addGameRequested: EventEmitter
 
     private newGame = {name: ''}
-
-    @Listen('addGameCompleted')
-    addGameCompletedHandler(newDocRef) {
-      nav.pop()
-    }
 
     changeValue(ev){
         let value = ev.target.value;
@@ -36,7 +29,12 @@ export class AppAddGame {
       var requestSubscription = requestStatus.subscribe(
         (newGameRef) => (null),
         () => console.log("Error adding game"),
-        () => nav.pop()
+        () => {
+            const nav = document.querySelector('ion-nav')
+            if (nav && nav.canGoBack()) {
+                return nav.pop({ skipIfBusy: true });
+            }
+        }
       )
       var request = { data: this.newGame, status: requestStatus}
       this.addGameRequested.emit(request)
@@ -47,9 +45,7 @@ export class AppAddGame {
           <ion-header>
             <ion-toolbar color="primary">
               <ion-buttons slot="start">
-                <ion-button href="/">
-                  <ion-icon slot="icon-only" name="close"></ion-icon>
-                </ion-button>
+                <ion-back-button defaultHref="/"></ion-back-button>
               </ion-buttons>
               <ion-title>Add Game</ion-title>
             </ion-toolbar>
