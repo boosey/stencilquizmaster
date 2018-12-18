@@ -49,11 +49,10 @@ export class AppQuestions {
             <ion-list>
               {this.questions ? this.questions.map((q) => (
                   <ion-card>
-                    <ion-card-header>
-                      <ion-card-title>{q.prompt}</ion-card-title>
-                    </ion-card-header>
-                    <ion-card-content>
-                    </ion-card-content>
+                     <ion-item href={"/questions/" + q.questionId + "/details"}
+                       detail>
+                      {q.prompt}
+                     </ion-item>
                   </ion-card>
                 ))
                 : ''
