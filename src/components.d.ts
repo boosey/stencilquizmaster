@@ -35,6 +35,13 @@ export namespace Components {
     'onUpdateGameRequested'?: (event: CustomEvent) => void;
   }
 
+  interface AppEditQuestion {
+    'question': any;
+  }
+  interface AppEditQuestionAttributes extends StencilHTMLAttributes {
+    'question'?: any;
+  }
+
   interface AppGameDetails {
     'buttonText': string;
     'game': any;
@@ -101,6 +108,7 @@ declare global {
     'AppAddGame': Components.AppAddGame;
     'AppCommands': Components.AppCommands;
     'AppEditGame': Components.AppEditGame;
+    'AppEditQuestion': Components.AppEditQuestion;
     'AppGameDetails': Components.AppGameDetails;
     'AppHome': Components.AppHome;
     'AppMainmenu': Components.AppMainmenu;
@@ -115,6 +123,7 @@ declare global {
     'app-add-game': Components.AppAddGameAttributes;
     'app-commands': Components.AppCommandsAttributes;
     'app-edit-game': Components.AppEditGameAttributes;
+    'app-edit-question': Components.AppEditQuestionAttributes;
     'app-game-details': Components.AppGameDetailsAttributes;
     'app-home': Components.AppHomeAttributes;
     'app-mainmenu': Components.AppMainmenuAttributes;
@@ -142,6 +151,12 @@ declare global {
   var HTMLAppEditGameElement: {
     prototype: HTMLAppEditGameElement;
     new (): HTMLAppEditGameElement;
+  };
+
+  interface HTMLAppEditQuestionElement extends Components.AppEditQuestion, HTMLStencilElement {}
+  var HTMLAppEditQuestionElement: {
+    prototype: HTMLAppEditQuestionElement;
+    new (): HTMLAppEditQuestionElement;
   };
 
   interface HTMLAppGameDetailsElement extends Components.AppGameDetails, HTMLStencilElement {}
@@ -196,6 +211,7 @@ declare global {
     'app-add-game': HTMLAppAddGameElement
     'app-commands': HTMLAppCommandsElement
     'app-edit-game': HTMLAppEditGameElement
+    'app-edit-question': HTMLAppEditQuestionElement
     'app-game-details': HTMLAppGameDetailsElement
     'app-home': HTMLAppHomeElement
     'app-mainmenu': HTMLAppMainmenuElement
@@ -210,6 +226,7 @@ declare global {
     'app-add-game': HTMLAppAddGameElement;
     'app-commands': HTMLAppCommandsElement;
     'app-edit-game': HTMLAppEditGameElement;
+    'app-edit-question': HTMLAppEditQuestionElement;
     'app-game-details': HTMLAppGameDetailsElement;
     'app-home': HTMLAppHomeElement;
     'app-mainmenu': HTMLAppMainmenuElement;
