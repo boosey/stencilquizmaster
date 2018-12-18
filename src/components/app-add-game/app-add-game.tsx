@@ -43,12 +43,7 @@ export class AppAddGame {
     render() {
         return [
           <ion-header>
-            <ion-toolbar color="primary">
-              <ion-buttons slot="start">
-                <ion-back-button defaultHref="/"></ion-back-button>
-              </ion-buttons>
-              <ion-title>Add Game</ion-title>
-            </ion-toolbar>
+            <app-subpage-header titleText="Add Game"></app-subpage-header>
           </ion-header>,
 
           <ion-content padding>
