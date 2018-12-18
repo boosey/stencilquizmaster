@@ -15,9 +15,7 @@ export class AppSubpageHeader {
         return [
             <ion-toolbar color="primary">
               <ion-buttons slot="start">
-                <ion-button href="/">
-                  <ion-icon slot="icon-only" name="close"></ion-icon>
-                </ion-button>
+                <ion-back-button defaultHref="/"></ion-back-button>
               </ion-buttons>
               <ion-title>{this.titleText}</ion-title>
               {this.button !== null ?
