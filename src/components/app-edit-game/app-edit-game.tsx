@@ -30,19 +30,6 @@ export class AppEditGame {
       this.loadGameRequested.emit(request)
     }
 
-    // Listen for submission from Details pane then call command
-    // @Listen('gameDetailsSubmitted')
-    // requestUpdateGame(ev) {
-    //   var requestStatus = new Subject()
-    //   var requestSubscription = requestStatus.subscribe(
-    //     (gameRef) => (null),
-    //     () => console.log("Error updating game"),
-    //     () => nav.pop()
-    //   )
-    //   var request = { data: ev.data, status: requestStatus}
-    //   this.updateGameRequested.emit(request)
-    // }
-
     // This is the local function for calling the command
     requestUpdateGame() {
       var requestStatus = (new Subject())
@@ -58,7 +45,6 @@ export class AppEditGame {
       }
       this.updateGameRequested.emit(request)
     }
-
 
     changeValue(ev){
         let value = ev.target.value;
