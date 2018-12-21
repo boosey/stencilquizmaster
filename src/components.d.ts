@@ -33,10 +33,14 @@ export namespace Components {
   }
 
   interface AppEditQuestion {
-    'question': any;
+    'gameId': any;
+    'questionId': any;
   }
   interface AppEditQuestionAttributes extends StencilHTMLAttributes {
-    'question'?: any;
+    'gameId'?: any;
+    'onLoadQuestionFromIdRequested'?: (event: CustomEvent) => void;
+    'onUpdateQuestionRequested'?: (event: CustomEvent) => void;
+    'questionId'?: any;
   }
 
   interface AppGameDetails {

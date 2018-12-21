@@ -17,7 +17,7 @@ export class AppCommands {
     @State() user = null
 
     private gamesCollectionRef = firebase.firestore().collection('games')
-    private questionsRef = firebase.firestore().collection('questions')
+    private questionsCollectionRef = firebase.firestore().collection('questions')
 
     @Listen('loadQuestionsRequested')
     loadQuestionsRequested(ev) {
@@ -25,7 +25,7 @@ export class AppCommands {
       var status = ev.detail.status
       var uid = this.user ? this.user.uid : ''
 
-      var questionsQuery = this.questionsRef
+      var questionsQuery = this.questionsCollectionRef
       .where('creator', "==", uid)
       .where('gameId', "==", gameId)
 
@@ -34,6 +34,15 @@ export class AppCommands {
          () => console.log("Error getting questions"),
          () => status.complete()
       )
+    }
+
+    @Listen('loadQuestionFromIdRequested')
+    loadQuestionFromIdRequestedHandler(ev){
+      var questionId = ev.detail.data
+      var status = ev.detail.status
+      var questionRef = this.questionsCollectionRef.doc(questionId)
+
+      docData(questionRef).pipe(first()).subscribe((doc) => status.next(doc))
     }
 
     @Listen('loadGameRequested')

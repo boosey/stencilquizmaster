@@ -38,6 +38,7 @@ export class AppRoot {
           <ion-route url="/addgame" component="app-add-game" />
           <ion-route url="/editgame/:gameId" component="app-edit-game" />
           <ion-route url="/editgame/:gameId/questions" component="app-questions"/>
+          <ion-route url="/editgame/:gameId/questions/add-question" component="app-edit-question"/>
           <ion-route url="/editgame/:gameId/questions/:questionId" component="app-edit-question"/>
           <ion-route url="/playgame/:gameId" component="app-play-game" />
         </ion-router>
